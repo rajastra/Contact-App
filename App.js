@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ContactScreen from "./components/ContactScreen";
@@ -6,8 +6,8 @@ import FavoriteScreen from "./components/FavoriteScreen";
 import GroupScreen from "./components/GroupScreen";
 import React, { useEffect, useState } from "react";
 import * as Contacts from "expo-contacts";
-const Tab = createBottomTabNavigator();
 
+const Tab = createBottomTabNavigator();
 export default function App() {
   const [contacts, setContacts] = useState([]);
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function App() {
         })}
       >
         <Tab.Screen
-          name="Contact"
+          name="Contacts"
           children={() => <ContactScreen contacts={contacts} />}
         />
         <Tab.Screen name="Favorite" component={FavoriteScreen} />

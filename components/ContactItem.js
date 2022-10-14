@@ -1,12 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Item = ({ name }) => (
-  <View style={styles.item}>
-    <Text style={styles.font}>{name}</Text>
-  </View>
+const ContactItem = ({ item, navigation }) => (
+  <TouchableOpacity
+    style={styles.item}
+    onPress={() => navigation.navigate("ContactDetail", { item })}
+  >
+    <Text style={styles.font}>{item.name}</Text>
+    <Text style={styles.font}>Contact id : {item.id}</Text>
+  </TouchableOpacity>
 );
 
-export default Item;
+export default ContactItem;
 
 const styles = StyleSheet.create({
   item: {
