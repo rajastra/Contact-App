@@ -6,6 +6,8 @@ import FavoriteScreen from "./components/FavoriteScreen";
 import GroupScreen from "./components/GroupScreen";
 import React, { useEffect, useState } from "react";
 import * as Contacts from "expo-contacts";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const Tab = createBottomTabNavigator();
 export default function App() {
@@ -26,25 +28,24 @@ export default function App() {
   }, []);
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          headerShown: false,
-          tabBarStyle: {
-            position: "absolute",
-            backgroundColor: "rgba(34,36,40,1)",
-            height: 50,
-          },
-        })}
-      >
-        <Tab.Screen
-          name="Contacts"
-          children={() => <ContactScreen contacts={contacts} />}
-        />
-        <Tab.Screen name="Favorite" component={FavoriteScreen} />
-        <Tab.Screen name="Group" component={GroupScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            headerShown: false,
+            tabBarStyle: {
+              position: "absolute",
+              backgroundColor: "rgba(34,36,40,1)",
+              height: 50,
+            },
+          })}
+        >
+          <Tab.Screen name="Contacts" component={ContactScreen} />
+          <Tab.Screen name="Favorite" component={FavoriteScreen} />
+          <Tab.Screen name="Group" component={GroupScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

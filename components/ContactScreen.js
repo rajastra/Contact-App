@@ -1,27 +1,29 @@
-import React from "react";
-import { StyleSheet, FlatList } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ContactDetail from "./ContactDetail";
 import ContactsList from "./ContactsList";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContacts } from "../store/contact-actions";
 
 const Stack = createNativeStackNavigator();
 const ContactScreen = (props) => {
-  const data = [...props.contacts];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, []);
+
   return (
-    // <FlatList
-    //   data={props.contacts}
-    //   renderItem={ContactItem}
-    //   keyExtractor={(item) => item.id}
-    // />
     <Stack.Navigator>
       <Stack.Screen
         name="Contact"
         options={{
           headerShown: false,
         }}
-      >
-        {(props) => <ContactsList {...props} contacts={data} />}
-      </Stack.Screen>
+        component={ContactsList}
+      />
+
       <Stack.Screen name="ContactDetail" component={ContactDetail} />
     </Stack.Navigator>
   );
