@@ -4,29 +4,18 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ContactScreen from "./components/ContactScreen";
 import FavoriteScreen from "./components/FavoriteScreen";
 import GroupScreen from "./components/GroupScreen";
-import React, { useEffect, useState } from "react";
-import * as Contacts from "expo-contacts";
+import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {
+  faContactBook,
+  faStar,
+  faUserGroup,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Tab = createBottomTabNavigator();
 export default function App() {
-  const [contacts, setContacts] = useState([]);
-  useEffect(() => {
-    (async () => {
-      const { status } = await Contacts.requestPermissionsAsync();
-      if (status === "granted") {
-        const { data } = await Contacts.getContactsAsync({
-          fields: [Contacts.Fields.Emails],
-        });
-
-        if (data.length > 0) {
-          setContacts(data);
-        }
-      }
-    })();
-  }, []);
-
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -35,8 +24,30 @@ export default function App() {
             headerShown: false,
             tabBarStyle: {
               position: "absolute",
-              backgroundColor: "rgba(34,36,40,1)",
-              height: 50,
+              backgroundColor: "#26302C",
+              height: 55,
+              borderTopWidth: 0,
+            },
+            tabBarLabelStyle: {
+              fontSize: 13,
+              color: "#ccc",
+            },
+            tabBarIcon: ({ focused }) => {
+              let icon;
+              if (route.name === "Contacts") {
+                icon = faContactBook;
+              } else if (route.name === "Favorite") {
+                icon = faStar;
+              } else if (route.name === "Group") {
+                icon = faUserGroup;
+              }
+              return (
+                <FontAwesomeIcon
+                  icon={icon}
+                  size={20}
+                  color={focused ? "#fff" : "#ccc"}
+                />
+              );
             },
           })}
         >

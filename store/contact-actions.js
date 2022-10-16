@@ -25,7 +25,7 @@ export const fetchContacts = () => {
       const { status } = await Contacts.requestPermissionsAsync();
       if (status === "granted") {
         const { data } = await Contacts.getContactsAsync({
-          fields: [Contacts.Fields.Emails],
+          fields: [Contacts.Fields.PhoneNumbers],
         });
         return data;
       }

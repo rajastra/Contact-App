@@ -24,7 +24,19 @@ const ContactScreen = (props) => {
         component={ContactsList}
       />
 
-      <Stack.Screen name="ContactDetail" component={ContactDetail} />
+      <Stack.Screen
+        name="ContactDetail"
+        component={ContactDetail}
+        options={({ route }) => ({
+          headerStyle: {
+            backgroundColor: "#26302C",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })}
+      />
     </Stack.Navigator>
   );
 };
