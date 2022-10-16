@@ -34,10 +34,10 @@ Aplikasi ini dibuat untuk memenuhi tugas UTS mata kuliah Pengembangan Aplikasi M
 - masuk ke folder project
 - ketikkan perintah `npm install` untuk menginstall package yang dibutuhkan
 - ketikkan perintah `npm start` untuk menjalankan aplikasi
-- ### Buka terminal kemudian salin script dibawah ini
+- ### Atau bisa langsung buka terminal kemudian salin script dibawah ini
   ```bash
-  git clone
-  cd contact-app
+  git clone https://github.com/rajastra/Contact-App.git
+  cd Contact-App
   npm install
   ```
 - ### untuk menjalankan aplikasi
