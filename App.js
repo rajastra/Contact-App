@@ -66,3 +66,5 @@ const styles = StyleSheet.create({
     backgroundColor: "blue",
   },
 });
+
+// git remote add origin https://github.com/rajastra/Contact-App.git
