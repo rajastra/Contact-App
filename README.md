@@ -68,19 +68,19 @@ Aplikasi ini dibuat untuk memenuhi tugas UTS mata kuliah Pengembangan Aplikasi M
   src="assets/ss-1.jpg"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 250px">
+  style="display: inline-block; max-width: 200px">
 <img
   src="assets/ss-2.jpg"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 250px">
+  style="display: inline-block; max-width: 200px">
 <img
   src="assets/ss-3.jpg"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 250px">
+  style="display: inline-block; max-width: 200px">
 <img
   src="assets/ss-4.jpg"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 250px">
+  style="display: inline-block; max-width: 200px">
