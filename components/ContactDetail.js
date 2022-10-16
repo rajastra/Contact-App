@@ -1,10 +1,25 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faClipboard, faUser } from "@fortawesome/free-solid-svg-icons";
+import * as Clipboard from "expo-clipboard";
 
 const ContactDetail = ({ route }) => {
   const { item } = route.params;
+
+  const copiedTextNumber = item.phoneNumbers[0].number || "";
+
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync(copiedTextNumber);
+    Alert.alert("Nomor berhasil di salin!", copiedTextNumber, [
+      {
+        text: "Cancel",
+        style: "cancel",
+      },
+      { text: "OK" },
+    ]);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.user}>
@@ -12,7 +27,12 @@ const ContactDetail = ({ route }) => {
           <FontAwesomeIcon icon={faUser} size={90} color={"white"} />
         </View>
         <Text style={styles.font}>{item.name}</Text>
-        <Text style={styles.font}>Nomor: {item.phoneNumbers[0].number}</Text>
+      </View>
+      <View style={styles.numberBox}>
+        <Text style={styles.font}>Nomor: {copiedTextNumber}</Text>
+        <TouchableOpacity onPress={copyToClipboard} style={styles.clipboard}>
+          <FontAwesomeIcon icon={faClipboard} size={20} color={"white"} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -40,6 +60,22 @@ const styles = StyleSheet.create({
   font: {
     fontSize: 20,
     color: "#fff",
+    marginTop: 20,
+  },
+  numberBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  clipboard: {
+    backgroundColor: "#777783",
+    width: 40,
+    height: 40,
+    borderRadius: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 20,
     marginTop: 20,
   },
 });

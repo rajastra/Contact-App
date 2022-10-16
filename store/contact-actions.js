@@ -31,6 +31,6 @@ export const fetchContacts = () => {
       }
     };
     const contacts = await fetchContacts();
-    dispatch(contactActions.replaceContacts(contacts));
+    dispatch(contactActions.replaceContacts(contacts || []));
   };
 };
